@@ -1,7 +1,7 @@
 Group Project - README Template
 ===
 
-# APP_NAME_HERE
+# neighbor_connect
 
 ## Table of Contents
 1. [Overview](#Overview)
