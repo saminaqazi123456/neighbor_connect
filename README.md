@@ -12,6 +12,7 @@ Group Project - README Template
 ## Overview
 ### Description
 [Description of your app]
+App is designed to connect neighbors based on interest categories. New user signs up, enters their profile details including the physical address, category preferences and search radius. Posts matching those choices will be displayed on Home Screen. The user can search existing posts and create new posts.
 
 ## Walkthrough
 [include GIF(s)]
