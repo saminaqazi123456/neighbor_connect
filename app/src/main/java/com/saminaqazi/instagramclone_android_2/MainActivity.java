@@ -10,9 +10,12 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.saminaqazi.instagramclone_android_2.fragments.ComposeFragment;
+import com.saminaqazi.instagramclone_android_2.fragments.HomeFragment;
 import com.saminaqazi.instagramclone_android_2.fragments.LogoutFragment;
 import com.saminaqazi.instagramclone_android_2.fragments.PostsFragment;
+import com.saminaqazi.instagramclone_android_2.fragments.ProfileFragment;
 import com.saminaqazi.instagramclone_android_2.fragments.ProfileFragment_JavaClass;
+import com.saminaqazi.instagramclone_android_2.fragments.SearchFragment;
 
 /*
 Parstagram links:
@@ -49,11 +52,14 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
                         // Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
-                        fragment = new PostsFragment();
+                        fragment = new HomeFragment();
                         break;
                     case R.id.action_compose:
                         // Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
                         fragment = new ComposeFragment();
+                        break;
+                    case R.id.action_search:
+                        fragment = new SearchFragment();
                         break;
                     case R.id.action_logout:
                         // Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
@@ -63,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_profile:
                     default:
                         // Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
-                        fragment = new ProfileFragment_JavaClass();
+                        fragment = new ProfileFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
