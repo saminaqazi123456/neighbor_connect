@@ -8,14 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
-import com.saminaqazi.instagramclone_android_2.R;
 
 /***
  * A login screen that offers login via username/password.
@@ -38,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
+        etPassword = findViewById(R.id.etChangePassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnSignUp = findViewById(R.id.btnSignUp);
 
