@@ -27,8 +27,8 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etChangePassword);
+        etEmail = findViewById(R.id.etChangeEmail);
         btnCreateAccount = findViewById(R.id.btnCreateAccount);
 
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {

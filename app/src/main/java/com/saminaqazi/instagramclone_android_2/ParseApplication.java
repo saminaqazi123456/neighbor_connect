@@ -17,8 +17,8 @@ public class ParseApplication extends Application {
         // clientKey is not needed unless explicitly configured
         // any network interceptors must be added with the Configuration Builder given this syntax
         Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("samina-parstagram") // should correspond to APP_ID env variable
-                .clientKey("CodepathMoveFastParse")  // set explicitly unless clientKey is explicitly configured on Parse server
-                .server("https://samina-parstagram.herokuapp.com/parse/").build());
+                .applicationId("neighbor-connect") // should correspond to APP_ID env variable
+                .clientKey("TeamOneCodePathSpring2020")  // set explicitly unless clientKey is explicitly configured on Parse server
+                .server("https://neighbor-connect.herokuapp.com/parse/").build());
     }
 }
