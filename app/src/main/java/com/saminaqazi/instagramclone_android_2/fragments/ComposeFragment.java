@@ -42,6 +42,31 @@ import static android.app.Activity.RESULT_OK;
  */
 public class ComposeFragment extends Fragment {
 
+    EditText etComposeBody;
+    EditText etComposeCategory;
+    Button   btnShare;
+
+    public ComposeFragment() {
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_compose, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        etComposeBody = view.findViewById(R.id.etComposeBody);
+        etComposeCategory = view.findViewById(R.id.etComposeCategory);
+        btnShare = view.findViewById(R.id.btnShare);
+
+    }
+
+    /*
     public static final String TAG = "ComposeFragment";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private EditText etDescription;
@@ -183,5 +208,5 @@ public class ComposeFragment extends Fragment {
             }
         });
     }
-
+*/
 }
