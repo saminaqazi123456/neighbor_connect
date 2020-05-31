@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:layout_gravity="center"
+    android:layout_gravity="top"
     android:layout_marginTop="4dp"
     android:orientation="vertical"
     tools:context=".SignupActivity">
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:padding="4dp"
-        android:src="@drawable/icon" />
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        app:srcCompat="@mipmap/neighbors_icon_foreground" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -44,16 +45,41 @@
         android:hint="@string/emailHint"
         android:inputType="textEmailAddress" />
 
+    <EditText
+        android:id="@+id/etPostalCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Zip Code"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/etDistance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Radius to others in miles (i.e. 1 mile away)"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/etInterests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Interests"
+        android:inputType="textPersonName" />
+
     <Button
         android:id="@+id/btnCreateAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_weight="1"
+        android:backgroundTint="#1E88E5"
         android:clickable="true"
-        android:textColor="#5623AB"
+        android:text="@string/create_account"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:text="@string/create_account" />
+        android:textColor="#FFFFFF" />
 
 
 </LinearLayout>

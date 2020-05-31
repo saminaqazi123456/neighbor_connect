@@ -11,12 +11,10 @@
     tools:context=".fragments.LogoutFragment">
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:padding="4dp"
-        android:src="@drawable/icon" />
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@mipmap/neighbors_icon_foreground" />
 
     <TextView
         android:id="@+id/etLogout"
@@ -24,8 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:gravity="center|center_horizontal|center_vertical"
-        android:text="Thank you for using Instagram Clone. Good Bye!"
-        android:textColor="#5623AB"
+        android:text="Thank you for using Neighbor Connect. Good Bye!"
+        android:textColor="#1E88E5"
         android:textSize="17sp" />
 
     <TextView
@@ -36,8 +34,8 @@
         android:ems="10"
         android:gravity="center_horizontal|center_vertical"
         android:text="timer"
-        android:textSize="32sp"
-        android:textColor="#5623AB" />
+        android:textColor="#1E88E5"
+        android:textSize="32sp" />
 
 
 </LinearLayout>
