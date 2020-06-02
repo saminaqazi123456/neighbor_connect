@@ -17,7 +17,7 @@
         android:layout_weight="1"
         android:text="@string/username"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <EditText
@@ -36,7 +36,7 @@
         android:layout_weight="1"
         android:text="@string/password"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <EditText
@@ -55,7 +55,7 @@
         android:layout_weight="1"
         android:text="@string/email"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <EditText
@@ -74,7 +74,7 @@
         android:layout_weight="1"
         android:text="Zip Code"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <EditText
@@ -92,7 +92,7 @@
         android:layout_weight="1"
         android:text="Radius to others in miles"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <EditText
@@ -110,7 +110,7 @@
         android:layout_weight="1"
         android:text="Interests"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <EditText
