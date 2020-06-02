@@ -6,17 +6,17 @@
     tools:context=".fragments.SearchFragment">
 
     <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
+        android:id="@+id/actvSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:hint="Search..." />
+        android:hint="Search Categories" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchPosts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/autoCompleteTextView"
+        android:layout_below="@+id/actvSearch"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>

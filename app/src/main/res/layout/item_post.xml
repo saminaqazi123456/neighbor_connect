@@ -43,7 +43,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivProfile"
-        android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="16sp"
         tools:text="Name " />
@@ -94,15 +93,13 @@
         tools:text="Category: " />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvPostCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvDateTime"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/textView1"
-        android:text="TextView"
-        android:textColor="#000000"
-        tools:text="Type" />
+        android:textColor="#000000" />
 
 </RelativeLayout>
