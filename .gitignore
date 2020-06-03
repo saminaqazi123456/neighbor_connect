@@ -2,3 +2,7 @@ local.properties
 app/*.iml
 .gradle/*
 .idea
+*.iml
+.settings
+.settings/
+.DS_Store
