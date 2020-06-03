@@ -15,6 +15,8 @@ import com.saminaqazi.instagramclone_android_2.R;
  */
 public class SettingsFragment extends Fragment {
 
+
+
     public SettingsFragment() {
         // Required empty public constructor
     }
