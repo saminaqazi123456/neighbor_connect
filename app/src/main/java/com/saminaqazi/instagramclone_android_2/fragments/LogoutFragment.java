@@ -15,10 +15,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.parse.ParseUser;
+import com.saminaqazi.instagramclone_android_2.LoginActivity;
 import com.saminaqazi.instagramclone_android_2.MainActivity;
 import com.saminaqazi.instagramclone_android_2.R;
 
 import org.w3c.dom.Text;
+
+import static com.parse.Parse.getApplicationContext;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,7 +53,7 @@ public class LogoutFragment extends Fragment {
 
         // https://stackoverflow.com/questions/31041884/execute-function-after-5-seconds-in-android
 
-        final int secs = 5;
+        final int secs = 3;
         new CountDownTimer((secs +1) * 1000, 1000) // Wait 5 secs, tick every 1 sec
         {
             @Override
@@ -71,9 +74,9 @@ public class LogoutFragment extends Fragment {
                 //txtCount.setText("GO!");
                 //finish();
                 // Time's up - Start the Login Activity
-                //final Intent tnt =
-                //        new Intent(getApplicationContext(), LoginActivity.class);
-                //startActivity(tnt);
+                final Intent tnt =
+                        new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(tnt);
             }
         }.start();
 

@@ -65,7 +65,7 @@ public class SignupActivity extends AppCompatActivity {
 
     private void createUser(String username, String password, String email, String zipCode, Float radius, String interests) {
         // Create the ParseUser
-        ParseUser user = new ParseUser();
+        final ParseUser user = new ParseUser();
         // Set core properties
         //user.setUsername("joestevens");
         //user.setPassword("secret123");
@@ -88,10 +88,11 @@ public class SignupActivity extends AppCompatActivity {
         user.put("radius", radius);
 
         //interests
+        //FIX THIS
         ParseQuery<Category> query = ParseQuery.getQuery(Category.class);
-        String objectId = "Bj4eEnT0uH"; //default walking
+        final String[] objectId = {"Bj4eEnT0uH"}; //default walking
         query.whereEqualTo("name", interests);
-
+        user.put("category", ParseObject.createWithoutData("Categories", objectId[0]));
         query.findInBackground(new FindCallback<Category>() {
             public void done(List<Category> results, ParseException e) {
                 if (e != null) {
@@ -99,16 +100,16 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this, "Added category Walking instead.", Toast.LENGTH_SHORT).show();
                 } else {
                     // results have all the Posts the current user liked.
-                    for (ParseObject cat: results) {
-                        String objectId = cat.getObjectId().toString();
+                    if (results.size() == 1) {
+                        for (ParseObject cat: results) {
+                            objectId[0] = cat.getObjectId().toString();
+                            Log.i(TAG, cat.getObjectId().toString());
+                        }
                     }
                 }
             }
         });
-
-        user.put("category", ParseObject.createWithoutData("Categories", objectId));
-
-
+        user.put("category", ParseObject.createWithoutData("Categories", objectId[0]));
         // Invoke signUpInBackground
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
