@@ -67,7 +67,10 @@ public class SignupActivity extends AppCompatActivity {
         user.setPassword(password);
 
         //check if null
-        //user.setEmail(email);
+        if (!email.isEmpty()) {
+            user.setEmail(email);
+        }
+
         // Set custom properties
         //user.put("phone", "650-253-0000");
         //zipcode
