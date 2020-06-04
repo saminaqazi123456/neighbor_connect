@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -19,6 +20,9 @@ public class SignupActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private EditText etEmail;
+    private EditText etZipCode;
+    private EditText etRadius;
+    private EditText etInterests;
     private Button btnCreateAccount;
 
     @Override
@@ -27,8 +31,12 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etChangePassword);
-        etEmail = findViewById(R.id.etChangeEmail);
+        etPassword = findViewById(R.id.etPassword);
+        etEmail = findViewById(R.id.etEmail);
+        etZipCode = findViewById(R.id.etPostalCode);
+        etRadius = findViewById(R.id.etDistance);
+        etInterests = findViewById(R.id.etInterests);
+
         btnCreateAccount = findViewById(R.id.btnCreateAccount);
 
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
@@ -38,15 +46,16 @@ public class SignupActivity extends AppCompatActivity {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 String email = etEmail.getText().toString();
-                createUser(username, password, email);
+                String zipCode = etZipCode.getText().toString();
+                Float radius = Float.parseFloat(etRadius.getText().toString());
+                String interests = etInterests.getText().toString();
+                createUser(username, password, email,zipCode, radius, interests);
                 finish();
-
             }
         });
-
     }
 
-    private void createUser(String username, String password, String email) {
+    private void createUser(String username, String password, String email, String zipCode, Float radius, String interests) {
         // Create the ParseUser
         ParseUser user = new ParseUser();
         // Set core properties
@@ -56,10 +65,18 @@ public class SignupActivity extends AppCompatActivity {
 
         user.setUsername(username);
         user.setPassword(password);
-        //user.setEmail(email);
 
+        //check if null
+        //user.setEmail(email);
         // Set custom properties
         //user.put("phone", "650-253-0000");
+        //zipcode
+        user.put("location_user", zipCode);
+        //radius
+        user.put("radius", radius);
+        //interests
+        user.put("category", ParseObject.createWithoutData("Categories", interests));
+
         // Invoke signUpInBackground
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
