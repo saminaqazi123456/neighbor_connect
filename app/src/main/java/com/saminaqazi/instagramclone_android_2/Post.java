@@ -4,14 +4,22 @@ import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.saminaqazi.instagramclone_android_2.ParseObjects.Category;
+
+import java.util.Objects;
 
 @ParseClassName("Post")
 public class Post extends ParseObject {
+
+    public Post(){
+
+    }
 
     public static final String KEY_USER = "author";
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image_post";
     public static final String KEY_CREATED_AT = "createdAt";
+    public static final String KEY_CATEGORIES = "categories";
 
     public String getDescription() {
         return getString(KEY_DESCRIPTION);
@@ -35,5 +43,9 @@ public class Post extends ParseObject {
 
     public void setUser(ParseUser user) {
         put(KEY_USER, user);
+    }
+
+    public Category getCategory() {
+        return (Category) getParseObject(KEY_CATEGORIES);
     }
 }

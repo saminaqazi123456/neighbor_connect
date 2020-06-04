@@ -65,6 +65,7 @@ public class HomeFragment extends Fragment {
     protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
+        query.include(Post.KEY_CATEGORIES);
         query.setLimit(LIMIT_QUERY); // set to 20
         query.addDescendingOrder(Post.KEY_CREATED_AT);
 

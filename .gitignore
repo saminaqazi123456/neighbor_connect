@@ -6,3 +6,4 @@ app/*.iml
 .settings
 .settings/
 .DS_Store
+*.iml
