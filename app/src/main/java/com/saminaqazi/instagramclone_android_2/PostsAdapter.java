@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.parse.ParseFile;
 import com.parse.ui.widget.ParseImageView;
 
+import java.util.Date;
 import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
@@ -57,18 +58,26 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         // private ImageView ivImage;
         private ParseImageView ivImage;
         private TextView tvDescription;
+        private TextView tvDateTime;
+        private TextView tvPostCategory;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivProfile);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            tvDateTime = itemView.findViewById(R.id.tvDateTime);
+            tvPostCategory = itemView.findViewById(R.id.tvPostCategory);
         }
 
         public void bind(Post post) {
             // Bind the post data to the view elements
             tvDescription.setText(post.getDescription());
             tvUsername.setText(post.getUser().getUsername());
+            tvDateTime.setText(post.getCreatedAt().toString());
+            if (post.getCategory() != null)
+                    tvPostCategory.setText(post.getCategory().getName());
+
             ParseFile image = post.getImage();
             if (image != null) {
                 //Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
