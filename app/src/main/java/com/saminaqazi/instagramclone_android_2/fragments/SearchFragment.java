@@ -53,7 +53,10 @@ public class SearchFragment extends Fragment {
         actvSearch = view.findViewById(R.id.actvSearch);
 
         allCategories = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(getContext(), R.layout.fragment_search, allCategories);
+        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, allCategories);
+        actvSearch.setAdapter(adapter);
+
+        queryCategories();
 
     }
 
@@ -75,6 +78,7 @@ public class SearchFragment extends Fragment {
                     Log.i(TAG, "Category: " + category.getName() + ", Description: " + category.getDescription());
                     allCategories.add(category.getName());
                 }
+                adapter.notifyDataSetChanged();
             }
             public void onFailure(Throwable e) {
                 Log.d("DEBUG", "Fetch timeline error: " + e.toString());
