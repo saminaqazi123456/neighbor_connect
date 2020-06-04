@@ -20,6 +20,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 import com.saminaqazi.instagramclone_android_2.ParseObjects.Category;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SignupActivity extends AppCompatActivity {
@@ -90,26 +91,27 @@ public class SignupActivity extends AppCompatActivity {
         //interests
         //FIX THIS
         ParseQuery<Category> query = ParseQuery.getQuery(Category.class);
-        final String[] objectId = {"Bj4eEnT0uH"}; //default walking
+        String objectId = "Bj4eEnT0uH"; //default walking
         query.whereEqualTo("name", interests);
-        user.put("category", ParseObject.createWithoutData("Categories", objectId[0]));
-        query.findInBackground(new FindCallback<Category>() {
-            public void done(List<Category> results, ParseException e) {
-                if (e != null) {
-                    // There was an error
-                    Toast.makeText(SignupActivity.this, "Added category Walking instead.", Toast.LENGTH_SHORT).show();
-                } else {
-                    // results have all the Posts the current user liked.
-                    if (results.size() == 1) {
-                        for (ParseObject cat: results) {
-                            objectId[0] = cat.getObjectId().toString();
-                            Log.i(TAG, cat.getObjectId().toString());
-                        }
-                    }
+
+        try
+        {
+            List<Category> results = query.find();
+            int counter = results.size();
+            if(counter == 1)
+            {
+                for (ParseObject cat: results) {
+                    objectId = cat.getObjectId().toString();
+                    Log.i(TAG, cat.getObjectId().toString());
                 }
             }
-        });
-        user.put("category", ParseObject.createWithoutData("Categories", objectId[0]));
+        }
+        catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+        user.put("category", ParseObject.createWithoutData("Categories", objectId));
+
         // Invoke signUpInBackground
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
