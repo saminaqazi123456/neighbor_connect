@@ -17,7 +17,7 @@ App is designed to connect neighbors based on interest categories. New user sign
 ## Walkthrough
 [include GIF(s)]
 
-## Product Specifications
+## Product-Spec
 ### Wireframes
 [In this section, add picture of your hand sketched or digital wireframes, and (optionally) a short description]
 <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
