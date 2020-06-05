@@ -1,50 +1,51 @@
 package com.saminaqazi.instagramclone_android_2.fragments;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.saminaqazi.instagramclone_android_2.MainActivity;
+import com.saminaqazi.instagramclone_android_2.ParseObjects.Category;
 import com.saminaqazi.instagramclone_android_2.Post;
 import com.saminaqazi.instagramclone_android_2.R;
+import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ComposeFragment extends Fragment {
 
+    private static final String TAG = "ComposeFragment";
+
     EditText etComposeBody;
-    EditText etComposeCategory;
+    SearchableSpinner ssComposeCategory;
     Button   btnShare;
+
+    List<String> categoryNames;
+    List<Category> allCategories;
+
+    ArrayAdapter spinnerAdapter;
 
     public ComposeFragment() {
 
@@ -61,11 +62,92 @@ public class ComposeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         etComposeBody = view.findViewById(R.id.etComposeBody);
-        etComposeCategory = view.findViewById(R.id.etComposeCategory);
+        ssComposeCategory = view.findViewById(R.id.ssComposeCategory);
         btnShare = view.findViewById(R.id.btnShare);
+
+        categoryNames = new ArrayList<>();
+        allCategories = new ArrayList<>();
+
+        spinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item,
+                            categoryNames);
+
+        ssComposeCategory.setAdapter(spinnerAdapter);
+
+        queryCategories();
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Posting: ");
+                Log.i(TAG, "Text:" + etComposeBody.getText());
+                Log.i(TAG, "Category:" + ssComposeCategory.getSelectedItem().toString());
+                Log.i(TAG, "Location " + ParseUser.getCurrentUser().get("location_user"));
+                if (etComposeBody.getText().length() > 0)
+                    savePost(etComposeBody.getText().toString(), ParseUser.getCurrentUser(),
+                            ssComposeCategory.getSelectedItem().toString());
+            }
+        });
 
     }
 
+    protected void queryCategories() {
+        ParseQuery<Category> query = ParseQuery.getQuery(Category.class);
+        //query.include(Post.KEY_USER);
+        query.addDescendingOrder(Post.KEY_CREATED_AT);
+
+        categoryNames.clear();
+
+        query.findInBackground(new FindCallback<Category>() {
+            @Override
+            public void done(List<Category> categories, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+                for (Category category : categories) {
+                    Log.i(TAG, "Category: " + category.getName() + ", Description: " + category.getDescription());
+                    allCategories.add(category);
+                    categoryNames.add(category.getName());
+                }
+                spinnerAdapter.notifyDataSetChanged();
+            }
+            public void onFailure(Throwable e) {
+                Log.d("DEBUG", "Fetch timeline error: " + e.toString());
+            }
+        });
+    }
+
+    private void savePost(String description, ParseUser currentUser, String cString) {
+        Post post = new Post();
+        post.setDescription(description);
+        post.setCategory(getCategoryFromArray(cString));
+        String location = (String) currentUser.get("location_user");
+        Log.i(TAG, "Location post: " + location);
+        post.setLocation(location);
+        //post.setImage(new ParseFile(photoFile));
+        post.setUser(currentUser);
+        post.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Error while saving", e);
+                    Toast.makeText(getContext(), "Error While Saving", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Log.i(TAG, "Post save was successful!");
+                etComposeBody.setText("");
+            }
+        });
+    }
+
+    private Category getCategoryFromArray(String cString) {
+        for (Category c : allCategories)
+        {
+            if (c.getName().equals(cString))
+                return c;
+        }
+        return null;
+    }
     /*
     public static final String TAG = "ComposeFragment";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;

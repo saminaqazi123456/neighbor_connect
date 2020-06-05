@@ -5,19 +5,24 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.saminaqazi.instagramclone_android_2.ParseObjects.Category;
 import com.saminaqazi.instagramclone_android_2.Post;
+import com.saminaqazi.instagramclone_android_2.PostsAdapter;
 import com.saminaqazi.instagramclone_android_2.R;
 
 import java.util.ArrayList;
@@ -33,6 +38,11 @@ public class SearchFragment extends Fragment {
 
     List<String> allCategories;
     ArrayAdapter<String> adapter;
+    protected PostsAdapter rvAdapter;
+
+    protected RecyclerView rvSearchPosts;
+    protected List<Post> allPosts;
+
 
     public SearchFragment() {
         // Required empty public constructor
@@ -51,13 +61,28 @@ public class SearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         actvSearch = view.findViewById(R.id.actvSearch);
+        rvSearchPosts = view.findViewById(R.id.rvSearchPosts);
 
+        allPosts = new ArrayList<>();
         allCategories = new ArrayList<>();
+
+        rvAdapter = new PostsAdapter(getContext(), allPosts);
+        rvSearchPosts.setAdapter(rvAdapter);
+        rvSearchPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+
         adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, allCategories);
         actvSearch.setAdapter(adapter);
 
         queryCategories();
 
+        actvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selection = (String)parent.getItemAtPosition(position);
+                Toast.makeText(getContext(), selection, Toast.LENGTH_SHORT).show();
+                queryPostsByCategory(selection);
+            }
+        });
     }
 
     protected void queryCategories() {
@@ -85,5 +110,36 @@ public class SearchFragment extends Fragment {
             }
         });
     }
+
+    protected void queryPostsByCategory(final String catName) {
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_USER);
+        query.include(Post.KEY_CATEGORIES);
+        query.addDescendingOrder(Post.KEY_CREATED_AT);
+
+        allPosts.clear();
+        rvAdapter.notifyDataSetChanged();
+
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+                for (Post post : posts) {
+                    if (post.getCategory().getName().equals(catName)) {
+                        Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
+                        allPosts.add(post);
+                    }
+                }
+                rvAdapter.notifyDataSetChanged();
+            }
+            public void onFailure(Throwable e) {
+                Log.d("DEBUG", "Fetch timeline error: " + e.toString());
+            }
+        });
+    }
+
 
 }
