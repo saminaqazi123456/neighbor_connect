@@ -70,6 +70,7 @@ public class HomeFragment extends Fragment {
         query.setLimit(LIMIT_QUERY); // set to 20
         query.addDescendingOrder(Post.KEY_CREATED_AT);
         query.whereEqualTo("location_post", ParseUser.getCurrentUser().get("location_user"));
+        query.whereEqualTo("categories", ParseUser.getCurrentUser().get("category"));
 
         allPosts.clear();
         adapter.notifyDataSetChanged();

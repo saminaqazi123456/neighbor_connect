@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -52,8 +53,10 @@ public class SettingsFragment extends Fragment {
 
         //set previous variables
         etChangeUsername = view.findViewById(R.id.etChangeUsername);
+        etChangePassword = view.findViewById(R.id.etChangePassword);
         etChangeEmail = view.findViewById(R.id.etChangeEmail);
         etChangeZipCode = view.findViewById(R.id.etChangePostalCode);
+        etChangeInterests = view.findViewById(R.id.etChangeInterests);
         //etChangeRadius = view.findViewById(R.id.etChangeDistance);
         btnSaveChanges = view.findViewById(R.id.btnSaveChanges);
 
@@ -75,32 +78,57 @@ public class SettingsFragment extends Fragment {
         btnSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Log.i(TAG, "SaveChanges button clicked");
-                /*try {
+                Log.i(TAG, "SaveChanges button clicked");
+                try {
                     String username = etChangeUsername.getText().toString();
                     String password = etChangePassword.getText().toString();
                     String email = etChangeEmail.getText().toString();
                     String zipCode = etChangeZipCode.getText().toString();
-                    Float radius = Float.parseFloat(etChangeRadius.getText().toString());
                     String interests = etChangeInterests.getText().toString();
-                    updateUser(username, password, email,zipCode, radius, interests);
+                    updateUser(username, password, email,zipCode, interests);
+                    Log.i(TAG, "Updated User");
+
                 }
-                catch (NullPointerException) {
+                catch (NullPointerException e) {
                     Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                }*/
+                }
 
                 //finish();
-                Toast.makeText(getContext(), "This is not yet implemented, sorry!", Toast.LENGTH_SHORT).show();
-            }
-
-            private void updateUser(String username, String password, String email, String zipCode, String interests) {
-                //implement this
+                //Toast.makeText(getContext(), "This is not yet implemented, sorry!", Toast.LENGTH_SHORT).show();
             }
         });
-
-
         return view;
     }
+
+    private void updateUser(final String username, final String password, final String email, final String zipCode, String interests) {
+        Log.i(TAG, "Updating User");
+        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
+        String id = ParseUser.getCurrentUser().getObjectId();
+        query.getInBackground(id, new GetCallback<ParseUser>() {
+            @Override
+            public void done(ParseUser object, ParseException e) {
+                if (!username.isEmpty()) {
+                    object.put("username", username);
+                    ParseUser.getCurrentUser().setUsername(username);
+                }
+                if (!password.isEmpty()) {
+                    object.put("password", password);
+                    ParseUser.getCurrentUser().setPassword(password);
+                }
+                if (!email.isEmpty()) {
+                    object.put("email", email);
+                    ParseUser.getCurrentUser().setEmail(email);
+                }
+                if (!zipCode.isEmpty()) {
+                    object.put("location_user", zipCode);
+                    ParseUser.getCurrentUser().put("location_user", zipCode);
+                }
+                object.saveInBackground();
+                Log.i(TAG, "Saved User Settings");
+            }
+        });
+    }
+
 }
 
 //onClick listener
