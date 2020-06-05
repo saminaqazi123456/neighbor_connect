@@ -75,8 +75,8 @@ public class SettingsFragment extends Fragment {
         btnSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Log.i(TAG, "CreateAccount button clicked");
-                try {
+                //Log.i(TAG, "SaveChanges button clicked");
+                /*try {
                     String username = etChangeUsername.getText().toString();
                     String password = etChangePassword.getText().toString();
                     String email = etChangeEmail.getText().toString();
