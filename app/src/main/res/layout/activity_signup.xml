@@ -54,19 +54,11 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/etDistance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Radius to others in miles (i.e. 1 mile away)"
-        android:inputType="numberDecimal" />
-
-    <EditText
         android:id="@+id/etInterests"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Interests"
+        android:hint="Interest"
         android:inputType="textPersonName" />
 
     <Button

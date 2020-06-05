@@ -32,7 +32,7 @@ public class SettingsFragment extends Fragment {
     private EditText etChangePassword;
     private EditText etChangeEmail;
     private EditText etChangeZipCode;
-    private EditText etChangeRadius;
+    //private EditText etChangeRadius;
     private EditText etChangeInterests;
     private Button btnSaveChanges;
 
@@ -54,7 +54,7 @@ public class SettingsFragment extends Fragment {
         etChangeUsername = view.findViewById(R.id.etChangeUsername);
         etChangeEmail = view.findViewById(R.id.etChangeEmail);
         etChangeZipCode = view.findViewById(R.id.etChangePostalCode);
-        etChangeRadius = view.findViewById(R.id.etChangeDistance);
+        //etChangeRadius = view.findViewById(R.id.etChangeDistance);
         btnSaveChanges = view.findViewById(R.id.btnSaveChanges);
 
         etChangeUsername.setText(user.getUsername().toString());
@@ -65,7 +65,7 @@ public class SettingsFragment extends Fragment {
         }
         etChangeZipCode.setText(user.getString("location_user").toString());
         Log.i(TAG, "ZipCode: "+user.getString("location_user").toString());
-        etChangeRadius.setText(user.getNumber("radius").toString());
+        //etChangeRadius.setText(user.getNumber("radius").toString());
         Log.i(TAG, "Radius: "+user.getNumber("radius").toString());
 
         //interest/category stuffs here
@@ -93,7 +93,7 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getContext(), "This is not yet implemented, sorry!", Toast.LENGTH_SHORT).show();
             }
 
-            private void updateUser(String username, String password, String email, String zipCode, Float radius, String interests) {
+            private void updateUser(String username, String password, String email, String zipCode, String interests) {
                 //implement this
             }
         });

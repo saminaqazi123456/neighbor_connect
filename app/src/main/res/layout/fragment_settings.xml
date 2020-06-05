@@ -86,24 +86,6 @@
         android:inputType="number" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Radius to others in miles"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/etChangeDistance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Radius to others in miles (i.e. 1)"
-        android:inputType="numberDecimal" />
-
-    <TextView
         android:id="@+id/tvPostCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
