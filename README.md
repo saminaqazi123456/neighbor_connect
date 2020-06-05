@@ -26,9 +26,10 @@ App is designed to connect neighbors based on interest categories. New user sign
 [Optionally create an interactive prototype demonstrating app navigation]
 
 ## Members and Roles
-List each team member and their role in creating the project
-- [Samina Qazi - Developer, Project Manager]
-- [Alejandro Gonzalez-Nunez - Developer, Researcher]
-- [Slavyana Nedelcheva - Developer, Data Scientist]
-- [Brenda Cid - Developer, UX Designer]
+
+- Alejandro Gonzalez-Nunez - Developer, Researcher
+- Brenda Cid - Developer, UX Designer
+- Samina Qazi - Developer, Project Manager
+- Slavyana Nedelcheva - Developer, Data Scientist
+
 
