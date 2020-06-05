@@ -13,7 +13,7 @@ neighbor_connect
 
 ### Description
 
-App is designed to connect neighbors based on interest categories. New user signs up, enters their profile details including the physical address, category preferences and search radius. Posts matching those choices will be displayed on Home Screen. The user can search existing posts and create new posts.
+App "neighbor_connect" is designed to connect neighbors based on interest categories. New user signs up, enters their profile details including their zip code and category preferences. Category examples can be cooking, pets, sports, etc. Posts matching those choices will be displayed on Home Screen. The user can search existing posts and create new posts.
 
 ### Walkthrough
 
@@ -23,15 +23,22 @@ App is designed to connect neighbors based on interest categories. New user sign
 ### User Stories (MVP Version 1.0)
 - User can create a new account
 - User can create a profile when creating a new account
-- User must specify username, password, address, category(ies)
+- User must specify username, password, email address, zip code, and category in the initial signup profile
 - User can login into an existing account
-- User can update address and category(ies) in Settings
-- User can view list of posts based on the address and category(ies) selected
+- User can edit their profile to update category or other account settings
+- User can view list of posts based on the zip code and category selected
 - User can author new post
+- User can include picture in the new post
+- User can select category for the new post
+- User can search posts for keywords and get list of matching posts
 - User can logout
+- User stays persistent between app restarts unless he/she logs out
+- User will need to re-login if they logged out in prior app session
+
 
 ### User Stories (Planned for Version 2.0)
 - User can upload a picture in the Settings
+- User can select more than one category
 - User can message (SMS) other users via email
 - User can chat with other users
 
@@ -44,8 +51,10 @@ App is designed to connect neighbors based on interest categories. New user sign
 
 https://www.figma.com/file/Gi3HfpBF7V7egMDOe1uPQm/Neighbor-Connect?node-id=0%3A1
 
+Static view link:
 <img src=https://github.com/saminaqazi123456/neighbor_connect/blob/master/figma_prototype.png width=800>
 
+Interactive view link: https://www.figma.com/proto/Gi3HfpBF7V7egMDOe1uPQm/Neighbor-Connect?node-id=1%3A3&scaling=scale-down
 
 ## Members-Roles
 
