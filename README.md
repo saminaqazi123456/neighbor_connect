@@ -20,7 +20,7 @@ App is designed to connect neighbors based on interest categories. New user sign
 [include GIF(s)]
 
 ## Product-Spec
-### User Stories
+### User Stories (MVP Version 1.0)
 - User can create a new account
 - User can create a profile when creating a new account
 - User must specify username, password, address, category(ies)
@@ -29,6 +29,11 @@ App is designed to connect neighbors based on interest categories. New user sign
 - User can view list of posts based on the address and category(ies) selected
 - User can author new post
 - User can logout
+
+### User Stories (Planned for Version 2.0)
+- User can upload a picture in the Settings
+- User can message (SMS) other users via email
+- User can chat with other users
 
 
 ## Wireframes
