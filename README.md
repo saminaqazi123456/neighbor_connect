@@ -17,7 +17,8 @@ App is designed to connect neighbors based on interest categories. New user sign
 ## Walkthrough
 [include GIF(s)]
 
-## Wireframes
+## Product Specifications
+### Wireframes
 [In this section, add picture of your hand sketched or digital wireframes, and (optionally) a short description]
 <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
@@ -26,7 +27,8 @@ App is designed to connect neighbors based on interest categories. New user sign
 
 ## Members and Roles
 List each team member and their role in creating the project
-[Person 1 - role]
-[Person 2 - role]
-[Person 3 - role]
-Brenda Cid, Alejandro Goncalez-Nunez, Slavyana Nedelcheva, Samina Qazi
+[Samina Qazi - Developer, Project Manager]
+[Alejandro Gonzalez-Nunez - Developer, Researcher]
+[Slavyana Nedelcheva - Developer, Data Scientist]
+[Brenda Cid - Developer, UX Designer]
+Brenda Cid, Alejandro Gonzalez-Nunez, Slavyana Nedelcheva, Samina Qazi
