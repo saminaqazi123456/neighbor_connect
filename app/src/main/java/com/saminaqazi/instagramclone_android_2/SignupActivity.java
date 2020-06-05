@@ -30,7 +30,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText etPassword;
     private EditText etEmail;
     private EditText etZipCode;
-    private EditText etRadius;
+    //private EditText etRadius;
     private EditText etInterests;
     private Button btnCreateAccount;
 
@@ -43,7 +43,7 @@ public class SignupActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         etEmail = findViewById(R.id.etEmail);
         etZipCode = findViewById(R.id.etPostalCode);
-        etRadius = findViewById(R.id.etDistance);
+        //etRadius = findViewById(R.id.etDistance);
         etInterests = findViewById(R.id.etInterests);
 
         btnCreateAccount = findViewById(R.id.btnCreateAccount);
@@ -56,15 +56,15 @@ public class SignupActivity extends AppCompatActivity {
                 String password = etPassword.getText().toString();
                 String email = etEmail.getText().toString();
                 String zipCode = etZipCode.getText().toString();
-                Float radius = Float.parseFloat(etRadius.getText().toString());
+                //Float radius = Float.parseFloat(etRadius.getText().toString());
                 String interests = etInterests.getText().toString();
-                createUser(username, password, email,zipCode, radius, interests);
+                createUser(username, password, email,zipCode, interests);
                 finish();
             }
         });
     }
 
-    private void createUser(String username, String password, String email, String zipCode, Float radius, String interests) {
+    private void createUser(String username, String password, String email, String zipCode, String interests) {
         // Create the ParseUser
         final ParseUser user = new ParseUser();
         // Set core properties
@@ -86,7 +86,7 @@ public class SignupActivity extends AppCompatActivity {
         user.put("location_user", zipCode);
 
         //radius
-        user.put("radius", radius);
+        user.put("radius", 1);
 
         //interests
         //FIX THIS

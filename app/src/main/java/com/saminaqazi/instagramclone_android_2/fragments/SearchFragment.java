@@ -12,9 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -24,6 +26,7 @@ import com.saminaqazi.instagramclone_android_2.ParseObjects.Category;
 import com.saminaqazi.instagramclone_android_2.Post;
 import com.saminaqazi.instagramclone_android_2.PostsAdapter;
 import com.saminaqazi.instagramclone_android_2.R;
+import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +38,13 @@ public class SearchFragment extends Fragment {
 
     public static final String TAG = "SearchFragment";
     AutoCompleteTextView actvSearch;
+    Button btnSearchPosts;
 
     List<String> allCategories;
     ArrayAdapter<String> adapter;
     protected PostsAdapter rvAdapter;
+    SearchableSpinner ssComposeCategory;
+
 
     protected RecyclerView rvSearchPosts;
     protected List<Post> allPosts;
@@ -60,8 +66,9 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        actvSearch = view.findViewById(R.id.actvSearch);
+        ssComposeCategory = view.findViewById(R.id.ssComposeCategory);
         rvSearchPosts = view.findViewById(R.id.rvSearchPosts);
+        btnSearchPosts = view.findViewById(R.id.btnSearchPosts);
 
         allPosts = new ArrayList<>();
         allCategories = new ArrayList<>();
@@ -70,12 +77,20 @@ public class SearchFragment extends Fragment {
         rvSearchPosts.setAdapter(rvAdapter);
         rvSearchPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, allCategories);
-        actvSearch.setAdapter(adapter);
+        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, allCategories);
+        ssComposeCategory.setAdapter(adapter);
 
         queryCategories();
 
-        actvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        btnSearchPosts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String selection = ssComposeCategory.getSelectedItem().toString();
+                queryPostsByCategory(selection);
+            }
+        });
+/*
+        ssComposeCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selection = (String)parent.getItemAtPosition(position);
@@ -83,7 +98,10 @@ public class SearchFragment extends Fragment {
                 queryPostsByCategory(selection);
             }
         });
+  */
+        //ssComposeCategory.onSearchableItemClicked(adapter.getItem(adapter.getPosition(ssComposeCategory.getSelectedItem().toString())), 0);
     }
+
 
     protected void queryCategories() {
         ParseQuery<Category> query = ParseQuery.getQuery(Category.class);

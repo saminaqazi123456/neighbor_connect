@@ -33,7 +33,7 @@ public class SettingsFragment extends Fragment {
     private EditText etChangePassword;
     private EditText etChangeEmail;
     private EditText etChangeZipCode;
-    private EditText etChangeRadius;
+    //private EditText etChangeRadius;
     private EditText etChangeInterests;
     private Button btnSaveChanges;
 
@@ -53,9 +53,11 @@ public class SettingsFragment extends Fragment {
 
         //set previous variables
         etChangeUsername = view.findViewById(R.id.etChangeUsername);
+        etChangePassword = view.findViewById(R.id.etChangePassword);
         etChangeEmail = view.findViewById(R.id.etChangeEmail);
         etChangeZipCode = view.findViewById(R.id.etChangePostalCode);
-        etChangeRadius = view.findViewById(R.id.etChangeDistance);
+        etChangeInterests = view.findViewById(R.id.etChangeInterests);
+        //etChangeRadius = view.findViewById(R.id.etChangeDistance);
         btnSaveChanges = view.findViewById(R.id.btnSaveChanges);
 
         etChangeUsername.setText(user.getUsername().toString());
@@ -66,7 +68,7 @@ public class SettingsFragment extends Fragment {
         }
         etChangeZipCode.setText(user.getString("location_user").toString());
         Log.i(TAG, "ZipCode: "+user.getString("location_user").toString());
-        etChangeRadius.setText(user.getNumber("radius").toString());
+        //etChangeRadius.setText(user.getNumber("radius").toString());
         Log.i(TAG, "Radius: "+user.getNumber("radius").toString());
 
         //interest/category stuffs here
@@ -82,9 +84,10 @@ public class SettingsFragment extends Fragment {
                     String password = etChangePassword.getText().toString();
                     String email = etChangeEmail.getText().toString();
                     String zipCode = etChangeZipCode.getText().toString();
-                    Float radius = Float.parseFloat(etChangeRadius.getText().toString());
                     String interests = etChangeInterests.getText().toString();
-                    updateUser(username, password, email,zipCode, radius, interests);
+                    updateUser(username, password, email,zipCode, interests);
+                    Log.i(TAG, "Updated User");
+
                 }
                 catch (NullPointerException e) {
                     Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
@@ -93,21 +96,33 @@ public class SettingsFragment extends Fragment {
                 //finish();
                 //Toast.makeText(getContext(), "This is not yet implemented, sorry!", Toast.LENGTH_SHORT).show();
             }
-
-
         });
-
         return view;
     }
 
-    private void updateUser(String username, String password, String email, final String zipCode, Float radius, String interests) {
+    private void updateUser(final String username, final String password, final String email, final String zipCode, String interests) {
         Log.i(TAG, "Updating User");
         ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
         String id = ParseUser.getCurrentUser().getObjectId();
         query.getInBackground(id, new GetCallback<ParseUser>() {
             @Override
             public void done(ParseUser object, ParseException e) {
-                object.put("location_user", zipCode);
+                if (!username.isEmpty()) {
+                    object.put("username", username);
+                    ParseUser.getCurrentUser().setUsername(username);
+                }
+                if (!password.isEmpty()) {
+                    object.put("password", password);
+                    ParseUser.getCurrentUser().setPassword(password);
+                }
+                if (!email.isEmpty()) {
+                    object.put("email", email);
+                    ParseUser.getCurrentUser().setEmail(email);
+                }
+                if (!zipCode.isEmpty()) {
+                    object.put("location_user", zipCode);
+                    ParseUser.getCurrentUser().put("location_user", zipCode);
+                }
                 object.saveInBackground();
                 Log.i(TAG, "Saved User Settings");
             }
