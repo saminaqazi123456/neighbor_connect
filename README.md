@@ -7,7 +7,7 @@ Android Group Project neighbor_connect
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
-2. [Members and Roles](#Roles)
+2. [Members and Roles](#Members and Roles)
 
 ## Overview
 ### Description
