@@ -5,9 +5,11 @@ neighbor_connect
 
 ## Table of Contents
 1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-2. [Members and Roles](#Members-Roles)
+2. [Walkthrough] (#Walkthrough)
+3. [Product Spec](#Product-Spec)
+4. [Wireframes](#Wireframes)
+5. [Interactive Prototype (Bonus)] (#Interactive-Prototype)
+5. [Members and Roles](#Members-Roles)
 
 ## Overview
 
@@ -21,11 +23,11 @@ App is designed to connect neighbors based on interest categories. New user sign
 
 ## Product-Spec
 
-### Wireframes
+## Wireframes
 
 <img src=https://github.com/saminaqazi123456/neighbor_connect/blob/master/Mockup%20version2%20202005262121081000.jpg width=600>
 
-### [BONUS] Interactive Prototype
+## Interactive-Prototype
 
 https://www.figma.com/file/Gi3HfpBF7V7egMDOe1uPQm/Neighbor-Connect?node-id=0%3A1
 
