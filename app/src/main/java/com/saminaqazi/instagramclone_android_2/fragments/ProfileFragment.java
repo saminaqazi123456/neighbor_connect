@@ -88,27 +88,31 @@ public class ProfileFragment extends Fragment {
     protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
+        query.include(Post.KEY_CATEGORIES);
         query.setLimit(LIMIT_QUERY); // set to 20
         query.addDescendingOrder(Post.KEY_CREATED_AT);
+        query.whereEqualTo("author", ParseUser.getCurrentUser());
 
         allPosts.clear();
         adapter.notifyDataSetChanged();
 
-        List<Post> ProfilePosts = new ArrayList<>();
-
-        try {
-            List<Post> postRecord = query.whereContains("author", ParseUser.getCurrentUser().getObjectId().toString()).find();
-            for (Post record: postRecord) {
-                if (record != null)
-                    {ProfilePosts.add(record);}
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+                for (Post post : posts) {
+                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
+                }
+                allPosts.addAll(posts);
+                adapter.notifyDataSetChanged();
             }
-            Log.i(TAG, "Got the posts len : " + ProfilePosts.size());
-        } catch (ParseException e) {
-            Log.e(TAG, "Issue with getting profile posts", e);
-        }
-        allPosts.addAll(ProfilePosts);
-        adapter.notifyDataSetChanged();
-
+            public void onFailure(Throwable e) {
+                Log.d("DEBUG", "Fetch timeline error: " + e.toString());
+            }
+        });
     }
 
 
