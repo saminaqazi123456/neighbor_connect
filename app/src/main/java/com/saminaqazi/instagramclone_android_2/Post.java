@@ -20,6 +20,7 @@ public class Post extends ParseObject {
     public static final String KEY_IMAGE = "image_post";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String KEY_CATEGORIES = "categories";
+    public static final String KEY_LOCATION = "location_post";
 
     public String getDescription() {
         return getString(KEY_DESCRIPTION);
@@ -47,5 +48,17 @@ public class Post extends ParseObject {
 
     public Category getCategory() {
         return (Category) getParseObject(KEY_CATEGORIES);
+    }
+
+    public void setCategory(Category category) {
+        put(KEY_CATEGORIES, category);
+    }
+
+    public String getLocation() {
+        return getString(KEY_LOCATION);
+    }
+
+    public void setLocation(String location) {
+        put(KEY_LOCATION, location);
     }
 }
