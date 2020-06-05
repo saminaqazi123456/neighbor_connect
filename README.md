@@ -49,12 +49,13 @@ App "neighbor_connect" is designed to connect neighbors based on interest catego
 
 ### Interactive Prototype (Bonus)
 
-https://www.figma.com/file/Gi3HfpBF7V7egMDOe1uPQm/Neighbor-Connect?node-id=0%3A1
+Interactive view link: https://www.figma.com/proto/Gi3HfpBF7V7egMDOe1uPQm/Neighbor-Connect?node-id=1%3A3&scaling=scale-down
 
-Static view link:
+Static view link: https://www.figma.com/file/Gi3HfpBF7V7egMDOe1uPQm/Neighbor-Connect?node-id=0%3A1
+
 <img src=https://github.com/saminaqazi123456/neighbor_connect/blob/master/figma_prototype.png width=800>
 
-Interactive view link: https://www.figma.com/proto/Gi3HfpBF7V7egMDOe1uPQm/Neighbor-Connect?node-id=1%3A3&scaling=scale-down
+
 
 ## Members-Roles
 
