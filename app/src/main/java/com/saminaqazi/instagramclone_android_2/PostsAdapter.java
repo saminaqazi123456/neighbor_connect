@@ -60,6 +60,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvDescription;
         private TextView tvDateTime;
         private TextView tvPostCategory;
+        private TextView tvDistance;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,6 +69,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvDateTime = itemView.findViewById(R.id.tvDateTime);
             tvPostCategory = itemView.findViewById(R.id.tvPostCategory);
+            tvDistance = itemView.findViewById(R.id.tvDistance);
         }
 
         public void bind(Post post) {
@@ -75,6 +77,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvDescription.setText(post.getDescription());
             tvUsername.setText(post.getUser().getUsername());
             tvDateTime.setText(post.getCreatedAt().toString());
+            tvDistance.setText(post.getLocation().toString());
             if (post.getCategory() != null)
                     tvPostCategory.setText(post.getCategory().getName());
 
