@@ -1,4 +1,4 @@
-Group Project - README Template
+Group Project neighbor_connect - README
 ===
 
 # neighbor_connect
