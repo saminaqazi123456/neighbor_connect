@@ -47,7 +47,7 @@ import static android.app.Activity.RESULT_OK;
 public class ComposeFragment extends Fragment {
 
     private static final String TAG = "ComposeFragment";
-    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 40;
+    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private File photoFile;
     private String photoFileName = "photo.jpg";
 
@@ -80,6 +80,7 @@ public class ComposeFragment extends Fragment {
         ssComposeCategory = view.findViewById(R.id.ssComposeCategory);
         btnShare = view.findViewById(R.id.btnShare);
         btnCaptureImage = view.findViewById(R.id.btnImageCapture);
+        ivPostImage = view.findViewById(R.id.ivPostImage);
 
         categoryNames = new ArrayList<>();
         allCategories = new ArrayList<>();
@@ -98,9 +99,17 @@ public class ComposeFragment extends Fragment {
                 Log.i(TAG, "Text:" + etComposeBody.getText());
                 Log.i(TAG, "Category:" + ssComposeCategory.getSelectedItem().toString());
                 Log.i(TAG, "Location " + ParseUser.getCurrentUser().get("location_user"));
-                if (etComposeBody.getText().length() > 0)
-                    savePost(etComposeBody.getText().toString(), ParseUser.getCurrentUser(),
-                            ssComposeCategory.getSelectedItem().toString());
+                String description = etComposeBody.getText().toString();
+                if (description.length() <= 0) {
+                    Toast.makeText(getContext(), "Description Cannot Be Empty", Toast.LENGTH_SHORT).show();
+                }
+                if (photoFile == null || ivPostImage.getDrawable() == null)
+                {
+                    Toast.makeText(getContext(), "Photo can not be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                savePost(etComposeBody.getText().toString(), ParseUser.getCurrentUser(),
+                            ssComposeCategory.getSelectedItem().toString(), photoFile);
             }
         });
 
@@ -141,14 +150,14 @@ public class ComposeFragment extends Fragment {
         });
     }
 
-    private void savePost(String description, ParseUser currentUser, String cString) {
+    private void savePost(String description, ParseUser currentUser, String cString, File photoFile) {
         Post post = new Post();
         post.setDescription(description);
         post.setCategory(getCategoryFromArray(cString));
         String location = (String) currentUser.get("location_user");
         Log.i(TAG, "Location post: " + location);
         post.setLocation(location);
-        //post.setImage(new ParseFile(photoFile));
+        post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
             @Override
@@ -160,6 +169,7 @@ public class ComposeFragment extends Fragment {
                 }
                 Log.i(TAG, "Post save was successful!");
                 etComposeBody.setText("");
+                ivPostImage.setImageResource(0);
             }
         });
     }
@@ -183,7 +193,7 @@ public class ComposeFragment extends Fragment {
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath2.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
