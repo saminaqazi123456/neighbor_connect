@@ -18,6 +18,19 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textSize="28sp" />
 
+    <ImageView
+        android:id="@+id/ivPostImage"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        tools:src="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btnImageCapture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:text="Take Picture" />
+
     <EditText
         android:id="@+id/etComposeBody"
         android:layout_width="match_parent"
