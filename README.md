@@ -21,6 +21,7 @@ App is designed to connect neighbors based on interest categories. New user sign
 ### Wireframes
 [In this section, add picture of your hand sketched or digital wireframes, and (optionally) a short description]
 <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src=https://github.com/saminaqazi123456/neighbor_connect/blob/master/Mockup%20version2%20202005262121081000.jpg width=600>
 
 ### [BONUS] Interactive Prototype
 [Optionally create an interactive prototype demonstrating app navigation]
