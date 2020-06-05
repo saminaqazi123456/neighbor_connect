@@ -93,7 +93,6 @@ public class SignupActivity extends AppCompatActivity {
         ParseQuery<Category> query = ParseQuery.getQuery(Category.class);
         String objectId = "Bj4eEnT0uH"; //default walking
         query.whereEqualTo("name", interests);
-
         try
         {
             List<Category> results = query.find();
