@@ -5,11 +5,9 @@ neighbor_connect
 
 ## Table of Contents
 1. [Overview](#Overview)
-2. [Walkthrough] (#Walkthrough)
-3. [Product Spec](#Product-Spec)
-4. [Wireframes](#Wireframes)
-5. [Interactive Prototype (Bonus)] (#Interactive-Prototype)
-5. [Members and Roles](#Members-Roles)
+2. [Product Spec](#Product-Spec)
+3. [Wireframes](#Wireframes)
+4. [Members and Roles](#Members-Roles)
 
 ## Overview
 
@@ -17,7 +15,7 @@ neighbor_connect
 
 App is designed to connect neighbors based on interest categories. New user signs up, enters their profile details including the physical address, category preferences and search radius. Posts matching those choices will be displayed on Home Screen. The user can search existing posts and create new posts.
 
-## Walkthrough
+### Walkthrough
 
 [include GIF(s)]
 
@@ -27,7 +25,7 @@ App is designed to connect neighbors based on interest categories. New user sign
 
 <img src=https://github.com/saminaqazi123456/neighbor_connect/blob/master/Mockup%20version2%20202005262121081000.jpg width=600>
 
-## Interactive-Prototype
+### Interactive Prototype (Bonus)
 
 https://www.figma.com/file/Gi3HfpBF7V7egMDOe1uPQm/Neighbor-Connect?node-id=0%3A1
 
