@@ -20,6 +20,16 @@ App is designed to connect neighbors based on interest categories. New user sign
 [include GIF(s)]
 
 ## Product-Spec
+### User Stories
+- User can create a new account
+- User can create a profile when creating a new account
+- User must specify username, password, address, category(ies)
+- User can login into an existing account
+- User can update address and category(ies) in Settings
+- User can view list of posts based on the address and category(ies) selected
+- User can author new post
+- User can logout
+
 
 ## Wireframes
 
