@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.saminaqazi.instagramclone_android_2.Post;
 import com.saminaqazi.instagramclone_android_2.PostsAdapter;
 import com.saminaqazi.instagramclone_android_2.R;
