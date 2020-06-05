@@ -44,7 +44,7 @@ App "neighbor_connect" is designed to connect neighbors based on interest catego
 
 
 ### User Stories (Planned for Version 2.0)
-- User can upload a picture in the Settings
+- User can upload an avatar picture for themselves in the Settings
 - User can select more than one category
 - User can message (SMS) other users via email
 - User can chat with other users
