@@ -1,7 +1,7 @@
-Group Project neighbor_connect - README
+Group Project neighbor_connect
 ===
 
-# neighbor_connect
+# README
 
 ## Table of Contents
 1. [Overview](#Overview)
