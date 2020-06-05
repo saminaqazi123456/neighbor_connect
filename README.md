@@ -24,7 +24,7 @@ App is designed to connect neighbors based on interest categories. New user sign
 
 ### [BONUS] Interactive Prototype
 [Optionally create an interactive prototype demonstrating app navigation]
-<img src=https://www.figma.com/file/Gi3HfpBF7V7egMDOe1uPQm/Neighbor-Connect?node-id=0%3A1 width=800>
+https://www.figma.com/file/Gi3HfpBF7V7egMDOe1uPQm/Neighbor-Connect?node-id=0%3A1
 
 
 ## Members-Roles
