@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -75,8 +76,8 @@ public class SettingsFragment extends Fragment {
         btnSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Log.i(TAG, "SaveChanges button clicked");
-                /*try {
+                Log.i(TAG, "SaveChanges button clicked");
+                try {
                     String username = etChangeUsername.getText().toString();
                     String password = etChangePassword.getText().toString();
                     String email = etChangeEmail.getText().toString();
@@ -85,22 +86,34 @@ public class SettingsFragment extends Fragment {
                     String interests = etChangeInterests.getText().toString();
                     updateUser(username, password, email,zipCode, radius, interests);
                 }
-                catch (NullPointerException) {
+                catch (NullPointerException e) {
                     Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                }*/
+                }
 
                 //finish();
-                Toast.makeText(getContext(), "This is not yet implemented, sorry!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "This is not yet implemented, sorry!", Toast.LENGTH_SHORT).show();
             }
 
-            private void updateUser(String username, String password, String email, String zipCode, Float radius, String interests) {
-                //implement this
-            }
+
         });
-
 
         return view;
     }
+
+    private void updateUser(String username, String password, String email, final String zipCode, Float radius, String interests) {
+        Log.i(TAG, "Updating User");
+        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
+        String id = ParseUser.getCurrentUser().getObjectId();
+        query.getInBackground(id, new GetCallback<ParseUser>() {
+            @Override
+            public void done(ParseUser object, ParseException e) {
+                object.put("location_user", zipCode);
+                object.saveInBackground();
+                Log.i(TAG, "Saved User Settings");
+            }
+        });
+    }
+
 }
 
 //onClick listener
