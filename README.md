@@ -23,7 +23,7 @@ App "neighbor_connect" is designed to connect neighbors based on interest catego
 #### Login / Persistent User / Logout
 <img src='https://github.com/saminaqazi123456/neighbor_connect/blob/master/login_logout.gif' title='Login Video Walkthrough' width='' alt='Video Walkthrough' />
 
-[include GIF(s)]
+
 
 ## Product-Spec
 ### User Stories (MVP Version 1.0)
