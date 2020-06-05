@@ -7,7 +7,7 @@ Android Group Project neighbor_connect
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
-2. [Members and Roles](#Members and Roles)
+2. [Members and Roles](#Members-Roles)
 
 ## Overview
 ### Description
@@ -19,14 +19,13 @@ App is designed to connect neighbors based on interest categories. New user sign
 
 ## Product-Spec
 ### Wireframes
-[In this section, add picture of your hand sketched or digital wireframes, and (optionally) a short description]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+
 <img src=https://github.com/saminaqazi123456/neighbor_connect/blob/master/Mockup%20version2%20202005262121081000.jpg width=600>
 
 ### [BONUS] Interactive Prototype
 [Optionally create an interactive prototype demonstrating app navigation]
 
-## Members and Roles
+## Members-Roles
 
 - Alejandro Gonzalez-Nunez - Developer, Researcher
 - Brenda Cid - Developer, UX Designer
