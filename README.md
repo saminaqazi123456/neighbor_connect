@@ -1,4 +1,4 @@
-Group Project neighbor_connect
+Android Group Project neighbor_connect
 ===
 
 # README
