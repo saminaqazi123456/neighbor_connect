@@ -34,6 +34,7 @@ App "neighbor_connect" is designed to connect neighbors based on interest catego
 - User can logout
 - User stays persistent between app restarts unless he/she logs out
 - User will need to re-login if they logged out in prior app session
+- A backend admin will maintain list of existing categories available in the database
 
 
 ### User Stories (Planned for Version 2.0)
@@ -41,6 +42,9 @@ App "neighbor_connect" is designed to connect neighbors based on interest catego
 - User can select more than one category
 - User can message (SMS) other users via email
 - User can chat with other users
+- User can go back and update their own published posts
+- User can remove their own post
+- User can add new category but not remove or change the existing ones. Only admin can do that.
 
 
 ## Wireframes
