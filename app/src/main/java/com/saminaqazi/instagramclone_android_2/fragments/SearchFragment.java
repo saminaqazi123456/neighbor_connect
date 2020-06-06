@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -37,13 +38,11 @@ import java.util.List;
 public class SearchFragment extends Fragment {
 
     public static final String TAG = "SearchFragment";
-    AutoCompleteTextView actvSearch;
+    EditText etSearch;
     Button btnSearchPosts;
 
-    List<String> allCategories;
     ArrayAdapter<String> adapter;
     protected PostsAdapter rvAdapter;
-    SearchableSpinner ssComposeCategory;
 
 
     protected RecyclerView rvSearchPosts;
@@ -66,27 +65,23 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ssComposeCategory = view.findViewById(R.id.ssComposeCategory);
+        etSearch = view.findViewById(R.id.etSearch);
         rvSearchPosts = view.findViewById(R.id.rvSearchPosts);
         btnSearchPosts = view.findViewById(R.id.btnSearchPosts);
 
         allPosts = new ArrayList<>();
-        allCategories = new ArrayList<>();
 
         rvAdapter = new PostsAdapter(getContext(), allPosts);
         rvSearchPosts.setAdapter(rvAdapter);
         rvSearchPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, allCategories);
-        ssComposeCategory.setAdapter(adapter);
-
-        queryCategories();
 
         btnSearchPosts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String selection = ssComposeCategory.getSelectedItem().toString();
-                queryPostsByCategory(selection);
+                Log.i(TAG, "Finding Search");
+                String selection = etSearch.getText().toString();
+                queryPosts(selection);
             }
         });
 /*
@@ -102,38 +97,12 @@ public class SearchFragment extends Fragment {
         //ssComposeCategory.onSearchableItemClicked(adapter.getItem(adapter.getPosition(ssComposeCategory.getSelectedItem().toString())), 0);
     }
 
-
-    protected void queryCategories() {
-        ParseQuery<Category> query = ParseQuery.getQuery(Category.class);
-        //query.include(Post.KEY_USER);
-        query.addDescendingOrder(Post.KEY_CREATED_AT);
-
-        allCategories.clear();
-
-        query.findInBackground(new FindCallback<Category>() {
-            @Override
-            public void done(List<Category> categories, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue with getting posts", e);
-                    return;
-                }
-                for (Category category : categories) {
-                    Log.i(TAG, "Category: " + category.getName() + ", Description: " + category.getDescription());
-                    allCategories.add(category.getName());
-                }
-                adapter.notifyDataSetChanged();
-            }
-            public void onFailure(Throwable e) {
-                Log.d("DEBUG", "Fetch timeline error: " + e.toString());
-            }
-        });
-    }
-
-    protected void queryPostsByCategory(final String catName) {
+    protected void queryPosts(final String catName) {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.include(Post.KEY_CATEGORIES);
         query.addDescendingOrder(Post.KEY_CREATED_AT);
+        query.whereContains(Post.KEY_DESCRIPTION, catName);
 
         allPosts.clear();
         rvAdapter.notifyDataSetChanged();
@@ -146,10 +115,9 @@ public class SearchFragment extends Fragment {
                     return;
                 }
                 for (Post post : posts) {
-                    if (post.getCategory().getName().equals(catName)) {
-                        Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
-                        allPosts.add(post);
-                    }
+                    Log.i(TAG, "Post: " + post.getDescription() +
+                            ", username: " + post.getUser().getUsername());
+                    allPosts.add(post);
                 }
                 rvAdapter.notifyDataSetChanged();
             }

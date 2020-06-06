@@ -5,21 +5,23 @@
     android:layout_height="match_parent"
     tools:context=".fragments.SearchFragment">
 
-    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-        android:id="@+id/ssComposeCategory"
+    <EditText
+        android:id="@+id/etSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:hint="Search Categories" />
+        android:ems="10"
+        android:hint="Search Post"
+        android:imeOptions="actionDone"
+        android:inputType="textPersonName" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchPosts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btnSearchPosts"
-        android:layout_below="@+id/ssComposeCategory"
+        android:layout_below="@+id/etSearch"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp" />
 
     <Button
