@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.saminaqazi.instagramclone_android_2.ParseObjects.Category;
 import com.saminaqazi.instagramclone_android_2.Post;
 import com.saminaqazi.instagramclone_android_2.PostsAdapter;
@@ -103,6 +104,9 @@ public class SearchFragment extends Fragment {
         query.include(Post.KEY_CATEGORIES);
         query.addDescendingOrder(Post.KEY_CREATED_AT);
         query.whereContains(Post.KEY_DESCRIPTION, catName);
+        query.whereEqualTo("location_post", ParseUser.getCurrentUser().get("location_user"));
+        query.whereEqualTo("categories", ParseUser.getCurrentUser().get("category"));
+
 
         allPosts.clear();
         rvAdapter.notifyDataSetChanged();
