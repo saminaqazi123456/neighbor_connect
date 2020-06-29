@@ -101,7 +101,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:text="Category" />
+        android:text="Category"
+        />
 
 
 <Button

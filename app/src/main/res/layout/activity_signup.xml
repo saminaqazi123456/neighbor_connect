@@ -53,13 +53,14 @@
         android:hint="Zip Code"
         android:inputType="number" />
 
-    <EditText
-        android:id="@+id/etInterests"
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:id="@+id/ssRegisterCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Interest"
-        android:inputType="textPersonName" />
+        android:gravity="start|top"
+        android:text="Category"
+        />
 
     <Button
         android:id="@+id/btnCreateAccount"
