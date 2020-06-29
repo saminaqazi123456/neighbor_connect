@@ -123,6 +123,7 @@ public class ComposeFragment extends Fragment {
 
     }
 
+
     protected void queryCategories() {
         ParseQuery<Category> query = ParseQuery.getQuery(Category.class);
         //query.include(Post.KEY_USER);
@@ -143,6 +144,7 @@ public class ComposeFragment extends Fragment {
                     categoryNames.add(category.getName());
                 }
                 spinnerAdapter.notifyDataSetChanged();
+
             }
             public void onFailure(Throwable e) {
                 Log.d("DEBUG", "Fetch timeline error: " + e.toString());
