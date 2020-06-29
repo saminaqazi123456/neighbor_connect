@@ -6,8 +6,9 @@ neighbor_connect
 ## Table of Contents
 1. [Overview](#Overview)
 2. [Product Spec](#Product-Spec)
-3. [Wireframes](#Wireframes)
-4. [Members and Roles](#Members-Roles)
+3. [Example User](#Example-User)
+4. [Wireframes](#Wireframes)
+5. [Members and Roles](#Members-Roles)
 
 ## Overview
 
@@ -31,6 +32,13 @@ App "neighbor_connect" is designed to connect neighbors based on interest catego
 
 #### Update Settings
 <img src='https://github.com/saminaqazi123456/neighbor_connect/blob/master/update_settings.gif' title='Login Video Walkthrough' width='' alt='Video Walkthrough' />
+
+## Example-User
+
+For demonstration purposes, there is already a predefined user "barry" that is provided to show examples of user posts, with a 
+predefined category/interest for "Pets" in the 92617 zip code. 
+Username: barry
+Password: password
 
 ## Product-Spec
 ### User Stories (MVP Version 1.0)
