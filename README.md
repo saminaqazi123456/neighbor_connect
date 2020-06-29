@@ -36,8 +36,8 @@ App "neighbor_connect" is designed to connect neighbors based on interest catego
 ## Example-User
 
 For demonstration purposes, there is already a predefined user "barry" that is provided to show examples of user posts, with a 
-predefined category/interest for "Pets" in the 92617 zip code. 
-Username: barry
+predefined category/interest for "Pets" in the 92617 zip code. <br>
+Username: barry<br>
 Password: password
 
 ## Product-Spec
