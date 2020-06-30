@@ -18,6 +18,9 @@ App "neighbor_connect" is designed to connect neighbors based on interest catego
 
 ### Walkthrough
 
+<img src='https://github.com/saminaqazi123456/neighbor_connect/blob/master/example.gif' title='SignUp Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
 #### SignUp
 <img src='https://github.com/saminaqazi123456/neighbor_connect/blob/master/signup.gif' title='SignUp Video Walkthrough' width='' alt='Video Walkthrough' />
 
